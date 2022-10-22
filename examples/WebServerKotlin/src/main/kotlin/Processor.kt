@@ -5,17 +5,17 @@ fun process(socket: Socket, request: HttpRequest) {
     // Print request that we received.
     println("Got request:")
     println(request.toString())
+    val requestLine = request.requestLine.split(" ")[1]
+    println("REQUEST LINE: $requestLine")
     System.out.flush()
-
-    val requestLine = request.requestLine
 
     // To send response back to the client.
     val output = PrintWriter(socket.getOutputStream())
     when {
-        requestLine.isEmpty() -> printSimplePage(output, listOf("Hello, world!"))
-        requestLine == "create/itemid" -> printSimplePage(output, listOf("Create something with some id"))
+        requestLine.isEmpty() || requestLine == "/" -> printSimplePage(output, listOf("Hello, world!"))
+        requestLine == "/create/itemid" -> printSimplePage(output, listOf("Create something with some id"))
         requestLine == "/delete/itemid" -> printSimplePage(output, listOf("Delete something with some id"))
-        requestLine == "exec/params" -> {
+        requestLine == "/exec/params" -> {
             Thread.sleep(5000)
             printSimplePage(output, listOf("Execute something with some parameters"))
         }

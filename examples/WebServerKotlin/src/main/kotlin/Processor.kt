@@ -16,8 +16,8 @@ fun process(socket: Socket, request: HttpRequest) {
         requestLine == "create/itemid" -> printSimplePage(output, listOf("Create something with some id"))
         requestLine == "/delete/itemid" -> printSimplePage(output, listOf("Delete something with some id"))
         requestLine == "exec/params" -> {
-            printSimplePage(output, listOf("Execute something with some parameters"))
             Thread.sleep(5000)
+            printSimplePage(output, listOf("Execute something with some parameters"))
         }
     }
     output.flush()

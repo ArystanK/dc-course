@@ -2,14 +2,12 @@ import java.io.PrintWriter
 import java.net.Socket
 
 fun process(socket: Socket, request: HttpRequest) {
-    // Print request that we received.
     println("Got request:")
     println(request.toString())
-    val requestLine = request.requestLine.split(" ")[1]
-    println("REQUEST LINE: $requestLine")
     System.out.flush()
 
-    // To send response back to the client.
+    val requestLine = request.requestLine.split(" ")[1]
+
     val output = PrintWriter(socket.getOutputStream())
     when {
         requestLine.isEmpty() || requestLine == "/" -> printSimplePage(output, listOf("Hello, world!"))

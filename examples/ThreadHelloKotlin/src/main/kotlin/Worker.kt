@@ -1,5 +1,10 @@
-class Worker(private val id: Int) : Thread() {
+import java.net.Socket
+
+class Worker(
+    private val socket: Socket,
+    private val request: HttpRequest,
+) : Thread() {
     override fun run() {
-        println("Hello, I am worker #$id")
+        process(socket, request)
     }
 }

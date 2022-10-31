@@ -5,11 +5,9 @@ class Consumer(
 ) : Thread() {
     override fun run() {
         try {
-            while (true) {
-                val (socket, request) = queue.pop()
-                // Process element
-                process(socket, request)
-            }
+            val (socket, request) = queue.pop()
+            // Process element
+            process(socket, request)
         } catch (ex: InterruptedException) {
             ex.printStackTrace()
         }

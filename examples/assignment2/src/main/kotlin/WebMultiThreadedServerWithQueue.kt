@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     val port = if (args.isNotEmpty()) args[0].toInt() else 8080
     // The maximum queue length for incoming connection
     val queueLength = if (args.size > 1) args[1].toInt() else 50
-    val numberOfThreads = if (args.size > 2) args[2].toInt() else 100
+    val numberOfThreads = if (args.size > 2) args[2].toInt() else 50
     try {
         val queue = ThreadSafeQueue<Pair<Socket, HttpRequest>>()
         repeat(numberOfThreads) {

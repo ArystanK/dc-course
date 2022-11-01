@@ -22,7 +22,7 @@ fun process(socket: Socket, request: HttpRequest) {
     socket.close()
 }
 
-fun printSimplePage(output: PrintWriter, content: List<String>) {
+private fun printSimplePage(output: PrintWriter, content: List<String>) {
     output.println("HTTP/1.1 200 OK")
     output.println("Content-Type: text/html; charset=utf-8")
     output.println()

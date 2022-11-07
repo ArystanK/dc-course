@@ -1,11 +1,10 @@
-import java.rmi.server.UnicastRemoteObject
 import java.util.concurrent.BlockingQueue
 import java.util.concurrent.LinkedBlockingQueue
 
 private var startTime: Long = 0
 private var endTime: Long = 0
 
-class ServiceImpl : UnicastRemoteObject(), Service {
+class ServiceImpl : Service {
     private val queue: BlockingQueue<Int> = LinkedBlockingQueue()
     private var numberOfPrimeNumbers = ArrayList<Int>()
     private var firstProcessStarted = false
